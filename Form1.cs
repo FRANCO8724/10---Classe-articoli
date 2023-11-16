@@ -16,5 +16,10 @@ namespace _10___Classe_articoli
         {
             InitializeComponent();
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
