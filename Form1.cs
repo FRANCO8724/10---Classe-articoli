@@ -50,16 +50,47 @@ namespace _10___Classe_articoli
             textBox3.Text = "";
             textBox4.Text = "";
 
-            Articolo a = new Articolo(_codice, _descrizione, _prezzo, _card,_tipo);            
+                Articolo a = new Articolo(_codice, _descrizione, _prezzo, _card, _tipo);
 
-            double sconto = a.Sconta;
+                double sconto = a.Sconta;
 
-            _Scontrino[_cont] = a.Memorizza;
+                _Scontrino[_cont] = a.Memorizza;
 
-            listView1.Items.Add(_Scontrino[_cont]);
+
+            if (_tipo == "articolo alimentare")
+            {
+                ArticoloAlimentare b = new ArticoloAlimentare(_codice, _descrizione, sconto, _card, _tipo);
+
+                double sconto2 = b.Sconta2;
+
+                _Scontrino[_cont] = b.Memorizza2;
+            }
+            if (_tipo == "articolo non alimentare")
+            {
+                ArticoloNonAlimentare c = new ArticoloNonAlimentare(_codice, _descrizione, sconto, _card, _tipo);
+
+                double sconto3 = c.Sconta3;
+
+                _Scontrino[_cont] = c.Memorizza3;
+            }
+
             _cont++;
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            _cont = 0;
 
+            for (int i = 0; i < _Scontrino.Length; i++)
+            {
+                listView1.Items.Add(_Scontrino[_cont]);
+                _cont++;
+
+                if(_Scontrino == null)
+                {
+                    break;
+                }
+            }
+        }
     }
 }

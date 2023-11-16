@@ -30,7 +30,7 @@ namespace _10___Classe_articoli
         {
             get
             {
-                if (card)
+                if (card == true)
                 {
                     c = true;
                     return prezzo = prezzo - (prezzo / 100) * 5;

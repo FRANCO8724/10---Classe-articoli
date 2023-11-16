@@ -70,6 +70,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Scontrino";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -127,6 +128,7 @@
             this.listView1.Size = new System.Drawing.Size(427, 158);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // textBox4
