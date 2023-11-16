@@ -16,8 +16,9 @@ namespace _10___Classe_articoli
         public int _codice;
         public string _descrizione;
         public double _prezzo;
+        public string _tipo;
         public bool _card = false;
-        public string[] Scontrino = new string[100];
+        public string[] _Scontrino = new string[100];
         public int _cont=0;
 
         public Form1()
@@ -40,15 +41,30 @@ namespace _10___Classe_articoli
             _codice = Convert.ToInt32(textBox1.Text);
             _descrizione = textBox2.Text;
             _prezzo = Convert.ToDouble(textBox3.Text);
+            _tipo= textBox4.Text;
+
+            
 
             textBox1.Text="";
             textBox2.Text = "";
             textBox3.Text = "";
+            textBox4.Text = "";
 
-            Articolo a = new Articolo(_codice, _descrizione, _prezzo, _card, Scontrino, _cont);
+            Articolo a = new Articolo(_codice, _descrizione, _prezzo, _card);            
 
             double sconto = a.Sconta;
-            listView1.Items.Add("prezzo: " +  sconto);
+
+            _Scontrino[_cont] = _codice + ";" + _descrizione + ";" + _prezzo + ";" + _tipo;
+
+            if (sconto != _prezzo)
+            {
+                string b = _Scontrino[_cont];
+                string[] campi = b.Split(';');
+                _Scontrino[_cont] = campi[0] + campi[1] + sconto + campi[3];
+            }
+
+            listView1.Items.Add(_Scontrino[_cont]);
+            _cont++;
         }
 
 

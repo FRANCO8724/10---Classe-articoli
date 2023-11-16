@@ -12,10 +12,8 @@ namespace _10___Classe_articoli
         protected string descrizione;
         protected double prezzo;
         protected bool card;
-        string[] Scontrino = new string[100];
-        int cont;
 
-        public Articolo(int _codice, string _descrizione, double _prezzo, bool _card, string[] Scontrino,int cont)
+        public Articolo(int _codice, string _descrizione, double _prezzo, bool _card)
         {
             this.codice = _codice;
             this.descrizione = _descrizione;
@@ -29,7 +27,8 @@ namespace _10___Classe_articoli
             {
                 if (card)
                 {
-                    return prezzo - (prezzo / 100) * 5;
+                    return prezzo=  prezzo - (prezzo / 100) * 5;
+
                 }
                 else
                 {
