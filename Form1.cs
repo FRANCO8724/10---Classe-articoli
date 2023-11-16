@@ -50,18 +50,11 @@ namespace _10___Classe_articoli
             textBox3.Text = "";
             textBox4.Text = "";
 
-            Articolo a = new Articolo(_codice, _descrizione, _prezzo, _card);            
+            Articolo a = new Articolo(_codice, _descrizione, _prezzo, _card,_tipo);            
 
             double sconto = a.Sconta;
 
-            _Scontrino[_cont] = _codice + ";" + _descrizione + ";" + _prezzo + ";" + _tipo;
-
-            if (sconto != _prezzo)
-            {
-                string b = _Scontrino[_cont];
-                string[] campi = b.Split(';');
-                _Scontrino[_cont] = campi[0] + campi[1] + sconto + campi[3];
-            }
+            _Scontrino[_cont] = a.Memorizza;
 
             listView1.Items.Add(_Scontrino[_cont]);
             _cont++;

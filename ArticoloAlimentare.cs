@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace _10___Classe_articoli
 {
-    internal class ArticoloAlimentare
-    {
-    }
+
 }
