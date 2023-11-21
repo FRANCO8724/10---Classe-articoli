@@ -44,7 +44,7 @@ namespace _10___Classe_articoli
             _prezzo = Convert.ToDouble(textBox3.Text);
 
             
-             
+              
             textBox1.Text="";
             textBox2.Text = "";
             textBox3.Text = "";
