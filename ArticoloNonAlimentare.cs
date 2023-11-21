@@ -17,7 +17,7 @@ namespace _10___Classe_articoli
             materiale = _descrizione;
         }
 
-        public double Sconta3
+        public override double Sconta
         {
             get
             {
@@ -32,24 +32,6 @@ namespace _10___Classe_articoli
                 }
             }
 
-        }
-
-        public string Memorizza3
-        {
-
-            get
-            {
-                double t = Sconta3;
-
-                if (c == true)
-                {
-                    return codice + ";" + descrizione + ";" + t + ";" + tipo;
-                }
-                else
-                {
-                    return codice + ";" + descrizione + ";" + prezzo + ";" + tipo;
-                }
-            }
         }
 
     }

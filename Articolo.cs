@@ -6,33 +6,43 @@ using System.Threading.Tasks;
 
 namespace _10___Classe_articoli
 {
-    internal class Articolo
+    class Articolo
     {
-        protected int codice;
-        protected string descrizione;
-        protected double prezzo;
+        protected int _codice;
+        protected string _descrizione;
+        protected double _prezzo;
         protected bool card;
-        protected string tipo;
-        public string[] Scontrino = new string[100];
-        public int cont = 0;
-        public bool c = false;
 
-        public Articolo(int _codice, string _descrizione, double _prezzo, bool _card, string _tipo)
+        static int codice
         {
-            this.codice = _codice;
-            this.descrizione = _descrizione;
-            this.prezzo = _prezzo;
-            this.card = _card;
-            this.tipo = _tipo;
+            get { return codice; }
+            set { codice = value; }
+        }
+        static int descrizione
+        {
+            get { return descrizione; }
+            set { descrizione = value; }
+        }
+        static int prezzo
+        {
+            get { return prezzo; }
+            set { prezzo = value; }
         }
 
-        public double Sconta
+        public Articolo(int codice, string descrizione, double prezzo, bool _card)
+        {
+            this._codice = codice;
+            this._descrizione = descrizione;
+            this._prezzo = prezzo;
+            this.card = _card;
+        }
+
+        public virtual double Sconta
         {
             get
             {
                 if (card == true)
                 {
-                    c = true;
                     return prezzo = prezzo - (prezzo / 100) * 5;
                 }
                 else
@@ -43,23 +53,6 @@ namespace _10___Classe_articoli
 
         }
 
-        public string Memorizza
-        {
-
-            get
-            {
-                double t = Sconta;
-
-                if (c == true)
-                {
-                    return codice + ";" + descrizione + ";" + t + ";" + tipo;
-                }
-                else
-                {
-                    return codice + ";" + descrizione + ";" + prezzo + ";" + tipo;
-                }
-            }
-        }
 
     }
 }
