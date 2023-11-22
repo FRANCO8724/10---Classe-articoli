@@ -8,30 +8,19 @@ namespace _10___Classe_articoli
 {
     internal class ArticoloNonAlimentare : Articolo
     {
-        private double prezzo3;
-        private string materiale;
 
-        public ArticoloNonAlimentare(int _codice, string _descrizione, double _prezzo, bool _card, string _tipo) : base(_codice, _descrizione, _prezzo, _card, _tipo)
+        public ArticoloNonAlimentare(int codice, string descrizione, double prezzo, bool card) : base(codice, descrizione, prezzo, card)
         {
-            this.prezzo3 = _prezzo;
-            materiale = _descrizione;
+            
         }
 
-        public override double Sconta
+        public override double Sconta()
         {
-            get
-            {
-                if (materiale == "riciclabile")
-                {
-                    c = true;
-                    return prezzo3 = prezzo3 - (prezzo3 / 100) * 10;
-                }
-                else
-                {
-                    return prezzo3;
-                }
-            }
 
+            double prezzoScontato = base.Sconta();
+
+            return prezzoScontato = prezzoScontato - (prezzoScontato / 100) * 10;
+           
         }
 
     }

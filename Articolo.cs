@@ -13,20 +13,20 @@ namespace _10___Classe_articoli
         protected double _prezzo;
         protected bool card;
 
-        static int codice
+        public int Codice
         {
-            get { return codice; }
-            set { codice = value; }
+            get { return _codice; }
+            set { _codice = value; }
         }
-        static int descrizione
+        public string Descrizione
         {
-            get { return descrizione; }
-            set { descrizione = value; }
+            get { return _descrizione; }
+            set { _descrizione = value; }
         }
-        static int prezzo
+        public double Prezzo
         {
-            get { return prezzo; }
-            set { prezzo = value; }
+            get { return _prezzo; }
+            set { _prezzo = value; }
         }
 
         public Articolo(int codice, string descrizione, double prezzo, bool _card)
@@ -37,24 +37,22 @@ namespace _10___Classe_articoli
             this.card = _card;
         }
 
-        public virtual double Sconta
-        {
-            get
-            {
-                if (card == true)
+        public virtual double Sconta()
+        { 
+                if (card)
                 {
-                    return prezzo = prezzo - (prezzo / 100) * 5;
+                    return Prezzo =   Prezzo - (Prezzo / 100) * 5;
                 }
                 else
                 {
-                    return prezzo;
+                    return Prezzo;
                 }
-            }
-
         }
 
-
     }
+
+
 }
+
     
 

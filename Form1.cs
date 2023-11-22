@@ -57,37 +57,55 @@ namespace _10___Classe_articoli
             }
             if (radioButton2.Checked == true)
             {
-                articolo[num] = new ArticoloNonAlimentare(_codice, _descrizione, _prezzo, _card);
+                if (checkBox1.Checked == true)
+                {
 
-                num++;
+                    articolo[num] = new ArticoloNonAlimentare(_codice, _descrizione, _prezzo, _card);
+
+                    num++;
+                }
+                else
+                {
+                    articolo[num] = new Articolo(_codice, _descrizione, _prezzo, _card);
+
+                    num++;
+                }
             }
             if (radioButton3.Checked == true)
             {
+
                 articolo[num] = new AlimentareFresco(_codice, _descrizione, _prezzo, _card);
-                
+
                 num++;
+                
             }
 
             
         }
 
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            double ls=0;
+            
+            double tot=0;
 
             for (int i = 0; i < num; i++)
             {
 
-                ls = articolo[i].Sconta;
+                listView1.Items.Add(articolo[i].Codice.ToString()+ " ; " + articolo[i].Descrizione + " ; " + (articolo[i].Sconta()).ToString());
 
-                listView1.Items.Add(articolo[i].ToString());
-
-                ls = ls + ls;
+                tot = tot + articolo[i].Sconta();
 
             }
 
-            listView1.Items.Add(ls.ToString());
+            listView1.Items.Add(tot.ToString());
 
         }
+
+
     }
 }
