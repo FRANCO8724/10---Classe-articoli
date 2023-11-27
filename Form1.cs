@@ -19,12 +19,14 @@ namespace _10___Classe_articoli
         public bool _card = false;
         Articolo[] articolo;
         public int num;
+        public bool cont;
 
         public Form1()
         {
             InitializeComponent();
             articolo = new Articolo[100];
             num = 0;
+            cont = true;
         }     
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,45 +41,55 @@ namespace _10___Classe_articoli
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _codice = Convert.ToInt32(textBox1.Text);
-            _descrizione = textBox2.Text;
-            _prezzo = Convert.ToDouble(textBox3.Text);
 
-            
-              
-            textBox1.Text="";
-            textBox2.Text = "";
-            textBox3.Text = "";
-
-            if (radioButton1.Checked == true)
+            if (cont == true)
             {
-                articolo[num] = new ArticoloAlimentare(_codice, _descrizione, _prezzo, _card);
+                _codice = Convert.ToInt32(textBox1.Text);
+                _descrizione = textBox2.Text;
+                _prezzo = Convert.ToDouble(textBox3.Text);
 
-                num++;
-            }
-            if (radioButton2.Checked == true)
-            {
-                if (checkBox1.Checked == true)
+
+
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+
+                if (radioButton1.Checked == true)
                 {
-
-                    articolo[num] = new ArticoloNonAlimentare(_codice, _descrizione, _prezzo, _card);
+                    articolo[num] = new ArticoloAlimentare(_codice, _descrizione, _prezzo, _card);
 
                     num++;
                 }
-                else
+                if (radioButton2.Checked == true)
                 {
-                    articolo[num] = new Articolo(_codice, _descrizione, _prezzo, _card);
+                    if (checkBox1.Checked == true)
+                    {
+
+                        articolo[num] = new ArticoloNonAlimentare(_codice, _descrizione, _prezzo, _card);
+
+                        num++;
+                    }
+                    else
+                    {
+                        articolo[num] = new Articolo(_codice, _descrizione, _prezzo, _card);
+
+                        num++;
+                    }
+                }
+                if (radioButton3.Checked == true)
+                {
+
+                    articolo[num] = new AlimentareFresco(_codice, _descrizione, _prezzo, _card);
 
                     num++;
+
                 }
             }
-            if (radioButton3.Checked == true)
+            else
             {
+                listView1.Items.Clear();
 
-                articolo[num] = new AlimentareFresco(_codice, _descrizione, _prezzo, _card);
-
-                num++;
-                
+                listView1.Items.Add("Cassa chiusa scontrino già fatto,riavviare programma");
             }
 
             
@@ -93,17 +105,28 @@ namespace _10___Classe_articoli
             
             double tot=0;
 
-            for (int i = 0; i < num; i++)
+            if (cont == true)
             {
 
-                listView1.Items.Add(articolo[i].Codice.ToString()+ " ; " + articolo[i].Descrizione + " ; " + (articolo[i].Sconta()).ToString());
+                for (int i = 0; i < num; i++)
+                {
 
-                tot = tot + articolo[i].Sconta();
+                    listView1.Items.Add(articolo[i].Codice.ToString() + " ; " + articolo[i].Descrizione + " ; " + (articolo[i].Sconta()).ToString());
 
+                    tot = tot + articolo[i].Sconta();
+
+                }
+
+                listView1.Items.Add(tot.ToString());
+
+                cont = false;
             }
+            else
+            {
+                listView1.Items.Clear();
 
-            listView1.Items.Add(tot.ToString());
-
+               listView1.Items.Add("Scontrino già fatto,riavviare programma");
+            }
         }
 
 
